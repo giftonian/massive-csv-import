@@ -1,0 +1,18 @@
+{
+    "name": "ascentech/massive-csv-import",
+    "description": "This package helps developer to upload csv files with millions of records efficiently with Laravel Queues.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ascentech\\MassiveCsvImport\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Waqas Tariq Dar"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
