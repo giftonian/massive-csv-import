@@ -105,7 +105,7 @@ class MassiveCsvImport
             //     $modelObj::create($data_arr);
             // }
 
-            break;
+            //break;
         }
         //dd('All done. Check jobs in Queue!');
         echo 'All done. Check jobs in Queue!';
