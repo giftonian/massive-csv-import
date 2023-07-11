@@ -43,7 +43,8 @@ class MassiveJob implements ShouldQueue
         if (class_exists($className)) {
             $modelObj = new $className;
         } else {
-            dd('Model name '.$className.' not found for '.$this->table.' table');
+            //dd('Model name '.$className.' not found for '.$this->table.' table');
+            echo 'Model name '.$className.' not found for '.$this->table.' table';
         }
 
         foreach ($data as $row) {            // you can also use updateOrCreate    

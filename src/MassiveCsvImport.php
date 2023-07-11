@@ -39,7 +39,8 @@ class MassiveCsvImport
 
             // dd('Yes', $className);
         } else {
-            dd('Model not found');
+            //dd('Model not found');
+            echo 'Model not found';
         }
 
         // Creating necessary Directories
@@ -72,7 +73,7 @@ class MassiveCsvImport
 
 
 
-        dd('Db Entries');
+       
     }
 
     function importToDB($table_dir_path, $table, $columns)
@@ -106,7 +107,8 @@ class MassiveCsvImport
 
             break;
         }
-        dd('All done. Check jobs in Queue!');
+        //dd('All done. Check jobs in Queue!');
+        echo 'All done. Check jobs in Queue!';
     }
 
     function getModelName($table)
