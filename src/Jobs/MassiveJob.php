@@ -10,6 +10,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Database\QueryException;
 
 class MassiveJob implements ShouldQueue
 {
@@ -43,17 +45,23 @@ class MassiveJob implements ShouldQueue
         if (class_exists($className)) {
             $modelObj = new $className;
         } else {
-            //dd('Model name '.$className.' not found for '.$this->table.' table');
-            echo 'Model name '.$className.' not found for '.$this->table.' table';
+            Log::error('MassiveCsvImport Error: Model name '.$className.' not found for '.$this->table.' table'); 
         }
 
-        foreach ($data as $row) {            // you can also use updateOrCreate    
+        foreach ($data as $row) {            
             $data_arr = [];
             for ($i=0; $i < $col_length; $i++) {
                 $data_arr[$this->columns[$i]] = $row[$i];
+            }      
+            
+            try {
+                $modelObj::create($data_arr);
+            }
+            catch (QueryException $e) {                
+                Log::error('MassiveCsvImport Error: Failed to import record: ' . $e->getMessage());               
+                // throw $e;
+                continue;
             }           
-
-            $modelObj::create($data_arr);
         }
             
         //dump('Done processing file: '.$this->file);

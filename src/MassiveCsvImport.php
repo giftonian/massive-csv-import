@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\File;
 
 use Illuminate\Support\Str;
 use Ascentech\MassiveCsvImport\Jobs\MassiveJob;
+use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Log;
 
 class MassiveCsvImport
 {
@@ -70,9 +72,6 @@ class MassiveCsvImport
         // DB Entries
 
         $this->importToDB($table_dir_path, $table, $columns);
-
-
-
        
     }
 
@@ -84,31 +83,10 @@ class MassiveCsvImport
        
         foreach ($files as $file) { // array_slice($files, 0, 1) getting 1 file at a time
             
-            MassiveJob::dispatch($file, $table, $columns);
-            //ItemsImportJob::dispatch($file);
-            //$data = array_map('str_getcsv', file($file));
-            
-            // foreach ($data as $row) {            // you can also use updateOrCreate    
-            //     $data_arr = [];
-            //     for ($i=0; $i < $col_length; $i++) {
-            //         $data_arr[$columns[$i]] = $row[$i];
-            //     }
-            //     // $modelObj::create([
-            //     //     'name'     => $row[0],
-            //     //     'small_description'    => $row[1], 
-            //     //     'description' => $row[2],
-            //     //     'original_price' => $row[3],
-            //     //     'selling_price' => $row[4],
-            //     //     'status' => $row[5],                    
-            //     // ]);
-
-            //     $modelObj::create($data_arr);
-            // }
-
-            //break;
+            MassiveJob::dispatch($file, $table, $columns);                     
         }
         //dd('All done. Check jobs in Queue!');
-        echo 'All done. Check jobs in Queue!';
+        //echo 'All done. Check jobs in Queue!';
     }
 
     function getModelName($table)
