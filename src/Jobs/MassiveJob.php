@@ -11,7 +11,6 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Database\QueryException;
 
 class MassiveJob implements ShouldQueue
 {
@@ -57,14 +56,12 @@ class MassiveJob implements ShouldQueue
             try {
                 $modelObj::create($data_arr);
             }
-            catch (QueryException $e) {                
-                Log::error('MassiveCsvImport Error: Failed to import record: ' . $e->getMessage());               
+            catch (\Throwable $e) {    // If you're using PHP 7 and above, it's recommended to catch \Throwable to handle both exceptions and errors.            
+                Log::error('MassiveCsvImport Job Exception: Failed to import record: ' . $e->getMessage());               
                 // throw $e;
                 continue;
             }           
-        }
-            
-        //dump('Done processing file: '.$this->file);
+        }                    
 
         unlink($this->file);
     }
