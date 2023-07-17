@@ -1,31 +1,27 @@
 <?php
 
 return [
-
    
     /*
     |--------------------------------------------------------------------------
-    | Test Value
+    | Configuration Values for Massive CSV Import Package
+    | Author: Waqas Tariq Dar
     |--------------------------------------------------------------------------
     |
     | This value sets the path for testing purpose
     |
     */
 
-    'val1' => 707,
+    'csv_chunk_size' => 10,
+    'models_path' => 'App\\'.'Models\\', // Path for your Model classes in laravel project
+    'files_path' => storage_path('massive-csv-files'), // path where chunks of large csv files will be saved for Jobs, along with any failed records csvs
 
     
-    'massive-array' => [
-        'disk' => null,        // Example: 'local', 's3'              Default: 'default'
-        'rules' => null,       // Example: ['file', 'mimes:png,jpg']  Default: ['required', 'file', 'max:12288'] (12MB)
-        'directory' => null,   // Example: 'tmp'                      Default  'livewire-tmp'
-        'middleware' => null,  // Example: 'throttle:5,1'             Default: 'throttle:60,1'
-        'preview_mimes' => [   // Supported file types for temporary pre-signed file URLs.
-            'png', 'gif', 'bmp', 'svg', 'wav', 'mp4',
-            'mov', 'avi', 'wmv', 'mp3', 'm4a',
-            'jpg', 'jpeg', 'mpga', 'webp', 'wma',
-        ],
-        'max_upload_time' => 5, // Max duration (in minutes) before an upload gets invalidated.
+    'massive-array' => [        
+        'directory' => 'testing',   // Example: 'tmp'               
+        'allowed_types' => [   // Supported file types for temporary usage - not using this value currently in package
+            'csv', 'xls'
+        ],        
     ],   
 
 ];

@@ -58,7 +58,7 @@ class MassiveCsvImportServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__.'/views', 'MassiveCsvImport');
         // // Automatically apply the package configuration
-        // $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'massive-csv-import');
+        $this->mergeConfigFrom(__DIR__.'/../config/massive-csv-import.php', 'massive-csv-import');
         
 
         // Register the main class to use with the facade
