@@ -105,7 +105,7 @@ class MassiveCsvImport
             MassiveJob::dispatch($file, $table, $columns);                     
         }
         $result['status'] = 1;
-        $result['message'] = "Massive CSV Import Jobs running successfully! ";         
+        $result['message'] = "Massive CSV Import Jobs running successfully. Please check the ".$table_dir_path."/failed directory for unsuccessful records, if any.";         
         Log::info('Jobs running successfully!');
         return $result;
     }
