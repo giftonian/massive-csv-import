@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'csv_chunk_size' => 10,
+    'csv_chunk_size' => 1000,
     'models_path' => 'App\\'.'Models\\', // Path for your Model classes in laravel project
     'files_path' => storage_path('massive-csv-files'), // path where chunks of large csv files will be saved for Jobs, along with any failed records csvs
 
