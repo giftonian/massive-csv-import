@@ -10,6 +10,7 @@
 
 ## Installation
 - composer require ascentech/massive-csv-import
+- Add `Ascentech\MassiveCsvImport\MassiveCsvImportServiceProvider::class,` into `providers` array of your project's `config\app.php` file.
 
 ## Usage
 - Prepare a large csv file (without headers) to import.
