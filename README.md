@@ -3,7 +3,7 @@
 - This package helps developer to upload csv files with millions of records efficiently with Laravel Queues.
 
 
-## Pre Requisites
+## Prerequisites
 - You must be using Laravel Queues and jobs table must exist in your database. If you are not using Queues, setup using this [link](https://laravel.com/docs/10.x/queues).
 - Write privileges on `storage` directory of your Laravel project. You can change this location from configuration file of this package as well.
 - By default, this package tries to search required Model class from `App\Models\` namespace. If you have placed Models in another directory, set its path in configuration file i.e., `massive-csv-import.php`.
