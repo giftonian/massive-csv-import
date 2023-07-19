@@ -53,21 +53,13 @@ class MassiveCsvImportServiceProvider extends ServiceProvider
      * Register the application services.
      */
     public function register() // bind classes
-    {
-        $this->app->make('Ascentech\MassiveCsvImport\Controllers\MassiveCsvController');
-
-        $this->loadViewsFrom(__DIR__.'/views', 'MassiveCsvImport');
+    {        
         // // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/massive-csv-import.php', 'massive-csv-import');
-        
+        $this->mergeConfigFrom(__DIR__.'/../config/massive-csv-import.php', 'massive-csv-import');        
 
         // Register the main class to use with the facade
         $this->app->singleton('massive-csv-import', function () {
             return new MassiveCsvImport;
         });
-
-        // $this->app->bind('massive-csv-import', function () {
-        //     return new MassiveCsvImport();
-        // });
     }
 }
