@@ -1,6 +1,6 @@
 # Massive CSV Import
 
-- This package helps developer to upload csv files with millions of records efficiently with Laravel Queues.
+- This lightweight package helps developers to import csv files with millions of records efficiently using Laravel Queues.
 
 
 ## Prerequisites
